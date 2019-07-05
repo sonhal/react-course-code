@@ -7,8 +7,8 @@ class App extends Component {
 
   state = {
     persons: [
-      {name: "Anne", age:21, text: "Boom"},
-      {name: "Sondre", age: 25}
+      {id: 'a2d', name: "Anne", age:21, text: "Boom"},
+      {id: 'asd', name: "Sondre", age: 25}
     ],
     showPersons: false
   }
@@ -48,6 +48,7 @@ class App extends Component {
               <Person 
                 name={person.name} 
                 age={person.age} 
+                key={person.id}
                 click={ () => this.deletePersonHandler(index)}
                 changed={this.switchNameHandler}>
                   {person.text}
