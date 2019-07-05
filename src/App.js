@@ -12,12 +12,10 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
-    console.log("Change!")
+  switchNameHandler = (newName) => {
     const pers = this.state.persons
-    const tmp = pers[0].name
-    pers[0].name = pers[1].name
-    pers[1].name = tmp
+    pers[0].name = newName;
+    pers[1].name = newName;
     this.setState({persons: pers})
   } 
 
@@ -25,9 +23,17 @@ class App extends Component {
     return (
       <div className="App">
           <h1>Hi I'm a React App!</h1>
-          <button onClick={this.switchNameHandler}>Switch Name</button>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchNameHandler}/>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} click={this.switchNameHandler}>My Hobbies: Intercourse</Person>
+          <button onClick={() => this.switchNameHandler("Boom!")}>Switch Name</button>
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age} 
+            click={this.switchNameHandler.bind(this, "Sondre")}
+            />
+          <Person 
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age} 
+            click={this.switchNameHandler.bind(this, "Anne")}
+           >My Hobbies: Intercourse</Person>
       </div>
     );
     //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, "REACT!!!"))
